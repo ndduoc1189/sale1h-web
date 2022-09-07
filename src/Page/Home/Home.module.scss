@@ -1,0 +1,18 @@
+.container {
+  width: 1150px;
+  padding: 86px 0px;
+  min-height: calc(100vh - 120px);
+  h1 {
+    font-size: 53px;
+  }
+  h5 {
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+}
+.search-row {
+  display: flex;
+  justify-content: center;
+}
