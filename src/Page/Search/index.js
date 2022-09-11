@@ -2,12 +2,13 @@ import ProductItem from "~/Components/ProductItem";
 import { useEffect, useState } from 'react';
 import {useLocation} from "react-router-dom";
 
+
 import axios from 'axios';
 
 function Search() {
 
     const [searchResult, setSearchResult] = useState([]);
-    const [orderType, setOrderType] = useState('desc');
+     const [orderType, setOrderType] = useState('desc');
     const search = useLocation().search;
     const key = new URLSearchParams(search).get('key');
     useEffect(() => {
@@ -19,7 +20,7 @@ function Search() {
             
         };
         fetchApi();
-    }, [orderType]);
+    },[orderType]);
 
 
     return (

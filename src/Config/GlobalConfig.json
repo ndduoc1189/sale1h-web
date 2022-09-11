@@ -1,0 +1,8 @@
+{
+    "API_URL":"http//localhost:8989/",
+    "AF_URL":"https://go.isclix.com/deep_link/4920806040439407239?utm_source=sale1h&url=",
+    "SOURCE_TYPE":{
+        "SHOPEE":"shopee",
+        "TIKI":"tiki"
+    }
+}

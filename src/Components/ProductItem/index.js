@@ -1,19 +1,27 @@
 import classNames from 'classnames/bind';
 import styles from './ProductItem.module.scss';
 import images from '~/assets/images';
-
+import cf from "~/Config/GlobalConfig.json";
 const cx = classNames.bind(styles);
 
 
 function ProductItem({data}) {
 
-    
+    function GeneratedLink(source_type, link){
+        switch(source_type){
+            case cf.SOURCE_TYPE.SHOPEE:
+                return encodeURI(cf.AF_LINK +"https://shopee.vn/"+link);
+            default:
+                return "/";
+            
+        }
+    }
 
     return (
     <div className="col-xl-3 col-sm-6">
         <div className={cx('product-item')}>
             <div className={cx('product-image')}>
-                <a href="/" >
+                <a href={GeneratedLink(data.source_type,data.name+data.shopid+"."+data.itemid)} >
                     <img className={cx('item-img')} src= { `https://cf.shopee.vn/file/${data.image}`} alt="item" />
                 </a>
                 <div className={cx('btn-source')}>
