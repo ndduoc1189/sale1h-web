@@ -1,0 +1,41 @@
+.sort-label{
+    align-self: center;
+}
+.sort-actions{
+    display: flex;
+    align-items: stretch;
+    flex: 1;
+    justify-content: flex-start;
+    
+    li{
+        box-shadow: 0 1px 1px 0 rgb(0 0 0 / 2%);
+        height: 2.125rem;
+        line-height: 2.125rem;
+        border-radius: 2px;
+        border: 0;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        display: flex;
+        flex: 0 0 5.625rem;
+        align-items: center;
+        justify-content: center;
+        text-transform: capitalize;
+        padding: 0 0.9375rem;
+        background: #fff;
+        white-space: nowrap;
+        margin-left: 0.625rem;
+        box-sizing: border-box;
+        
+    }
+    li:hover{
+            background: linear-gradient(135deg, #2260f8 0%, #9053fe 100%);
+            color: #fff;
+    }
+
+}
+.sort-actions .active{
+    background: linear-gradient(135deg, #2260f8 0%, #9053fe 100%);
+    color: #fff;
+}

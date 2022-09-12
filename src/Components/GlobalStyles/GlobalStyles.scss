@@ -8,8 +8,11 @@
 
 body {
   background-color: #f0f2f5;
-  font-family: 'Roboto', sans-serif;
-  font-size: 15px;
+  font-family: 'Roboto', -apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,sans-serif;
+  font-size: .85rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #5b7190;
   color: var(--black);
 }
 input,
@@ -54,8 +57,8 @@ img {
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -0.75rem;
-  margin-left: -0.75rem;
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
 }
 
 .text-center {
@@ -78,9 +81,23 @@ img {
 .i-find {
   background-position: 0 -80px;
 }
+.pt-4, .py-4 {
+  padding-top: 1.5rem!important;
+}
+.p-3 {
+  padding: 1rem!important;
+}
+.mb-3, .my-3 {
+  margin-bottom: 1rem!important;
+}
+h5{
+  font-size: .9rem;
+  font-weight: 500;
+}
+
 
 .search-title{
-  padding: 24px 24px;
+  padding: 24px 0px;
   font-weight: 500;
 }
 

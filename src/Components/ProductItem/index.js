@@ -30,7 +30,7 @@ function ProductItem({data}) {
                 </div>
             </div>
             <div className="p-3 pt-4">
-                <div className="custom-card-body">
+                <div className={cx('product-card-item')}>
                     <h5 className="mb-3"><a className="text-gray-900" href="/Search">{data.name}</a></h5>
                     <p className="text-gray-500"><i className="icofont-clock-time"></i> Ends in 18 days</p>
                 </div>
