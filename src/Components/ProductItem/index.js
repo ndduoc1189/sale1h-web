@@ -26,7 +26,7 @@ function ProductItem({data}) {
                 </a>
                 <div className={cx('btn-source')}>
                     <img className="img-fluid" src={images.logoShoppe} alt="brand" />
-                    <span>{data.source_type}</span>
+                    <span>{data.shop_location}</span>
                 </div>
             </div>
             <div className="p-3 pt-4">

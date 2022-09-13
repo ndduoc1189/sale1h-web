@@ -46,6 +46,7 @@ function BoxSearch() {
 
     const handleClear =(e) =>{
         setSearchValue('');
+        console.lod('vào');
     }
 
     const handleSearch =(e) =>{
@@ -69,8 +70,8 @@ function BoxSearch() {
                 render={attrs => (
                     <div className={cx('dropdown-results')} tabIndex="-1" {...attrs}>
                         <ul className={cx('search-hints')}>
-                            {searchResult.map((result) => (
-                                <li key={result.id} className={cx('search-hint-item')}>
+                            {searchResult.map((result,index) => (
+                                <li key={index} className={cx('search-hint-item')}>
                                     <Link to={encodeURI(`/search?key=${result.keyword}`)} >{result.keyword}</Link>
                                 </li>
                             ))}
