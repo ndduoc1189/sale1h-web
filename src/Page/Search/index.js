@@ -3,7 +3,7 @@ import styles from './Search.module.scss';
 import ProductItem from "~/Components/ProductItem";
 import { useEffect, useState } from 'react';
 import {useLocation} from "react-router-dom";
-import axios from 'axios';
+import {apiService} from "~/services";
 
 
 
@@ -46,8 +46,8 @@ function Search() {
     useEffect(() => {
         const fetchApi = async () => {
             SetIsLoading(true);
-            const result = await axios.get('http://localhost:8989/search-product',{params: searchParams});
-            setSearchResult(result.data);
+            const result = await  apiService.getProducts(searchParams);
+            setSearchResult(result);
             SetIsLoading(false);
             
         };

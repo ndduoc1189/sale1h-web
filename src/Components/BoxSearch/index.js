@@ -3,7 +3,7 @@ import styles from './BoxSearch.module.scss';
 import Tippy from '@tippyjs/react/headless'
 import { useEffect, useState, useRef } from 'react';
 import { useDebounce } from '~/hooks';
-import axios from 'axios';
+import {apiService} from "~/services";
 import { Link, useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
@@ -28,8 +28,8 @@ function BoxSearch() {
 
         const fetchApi = async () => {
             setLoading(true);
-            const result = await axios.get(encodeURI('http://localhost:8989/search-hint?key=' + debouncedValue), { crossdomain: true });
-            setSearchResult(result.data);
+            const result = await apiService.getSearchHint(debouncedValue);
+            setSearchResult(result);
             setLoading(false);
         };
 
