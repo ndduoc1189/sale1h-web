@@ -1,20 +1,13 @@
 import classNames from 'classnames/bind';
 import styles from './ProductItem.module.scss';
 import images from '~/assets/images';
-import cf from "~/Config/GlobalConfig.json";
 const cx = classNames.bind(styles);
 
 
 function ProductItem({data}) {
 
     function GeneratedLink(source_type, link){
-        switch(source_type){
-            case cf.SOURCE_TYPE.SHOPEE:
-                return encodeURI(cf.AF_LINK +"https://shopee.vn/"+link);
-            default:
-                return "/";
-            
-        }
+        return  "/";
     }
 
     return (

@@ -4,8 +4,8 @@ import ProductItem from "~/Components/ProductItem";
 import { useEffect, useState } from 'react';
 import {useLocation} from "react-router-dom";
 import {apiService} from "~/services";
-
-
+import config  from '~/Config';
+import ProductLoading from '~/Components/ProductLoading';
 
 
 const cx = classNames.bind(styles);
@@ -61,17 +61,38 @@ function Search() {
                 <h2 className="search-title" >Kết quả tìm kiếm cho từ khóa  {key} </h2>
             </div>
             <div className={cx("sort-section")}>
+            <ul className={cx('source-list')}>
+                    {
+                        config.dataSources.map((item, index) => (
+                            <li  className={cx('sort-item')} onClick={ () => SortClickHandler(item.name)} key={item.index}>{item.name}</li>
+                        ))
+                    }
+                </ul>
                 <div className={cx('sort-label')}>Sắp xếp theo:</div>
                 <ul className={cx('sort-actions')}>
                     {lstSort.map((item)=>(
-                        <li onClick={ () => SortClickHandler(item.key)}  className={searchParams.by === item.key ? cx('active') : ''} key={item.key}>{item.value}</li>
+                        <li onClick={ () => SortClickHandler(item.key)}  className={cx('sort-item') +" "+ (searchParams.by === item.key ? cx('active') : '')} key={item.key}>{item.value}</li>
                     ))}
                 </ul>
+                
             </div>
 
             <div className="row">
-                {isLoading && (
-                    <div>Đang tải dữ liệu....</div>
+                {isLoading && ( 
+                    <>
+                    <ProductLoading />
+                    <ProductLoading />
+                    <ProductLoading />
+                    <ProductLoading />
+                    <ProductLoading />
+                    <ProductLoading />
+                    <ProductLoading />
+                    <ProductLoading />
+                    <ProductLoading />
+                    <ProductLoading />
+                    <ProductLoading />
+                    <ProductLoading />
+                    </>
                 )}
 
                 { !isLoading &&  (searchResult.length>0) &&  searchResult.map((result,index) => (
