@@ -72,7 +72,7 @@ function BoxSearch() {
                         <ul className={cx('search-hints')}>
                             {searchResult.map((result,index) => (
                                 <li key={index} className={cx('search-hint-item')}>
-                                    <Link to={encodeURI(`/search?key=${result.keyword}`)} >{result.keyword}</Link>
+                                    <Link onClick={() => setShowResult(false) }  to={encodeURI(`/search?key=${result.keyword}`)} >{result.keyword}</Link>
                                 </li>
                             ))}
                         </ul>

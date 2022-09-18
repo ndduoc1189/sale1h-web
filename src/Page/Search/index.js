@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import ProductItem from "~/Components/ProductItem";
 import { useEffect, useState } from 'react';
-import {useLocation} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 import {apiService} from "~/services";
 import config  from '~/Config';
 import ProductLoading from '~/Components/ProductLoading';
@@ -19,59 +19,68 @@ function Search() {
         {key:"sales",value:"Bán nhiều"}
     ];
 
-
-    const search = useLocation().search;
-    const key = new URLSearchParams(search).get('key');
+    const [searchParams] = useSearchParams();
     const [isLoading,SetIsLoading] = useState(false);
     const [searchResult, setSearchResult] = useState([]);
-    const [searchParams, setSearchParams] = useState({
-        key: key,
+    const [sParams, setSParams] = useState({
+        key: searchParams.get('key'),
         by:'relevancy'
-    });
-    
+    }); 
     const SortClickHandler = (sortType)=>{
         if(!isLoading){
             SetIsLoading(true);
             let updatedValue = {};
             updatedValue = {by:sortType};
-            setSearchParams(searchParams => ({
+            setSParams(searchParams => ({
                 ...searchParams,
                 ...updatedValue
               }))
-            console.log(searchParams);
         }
        
     };
 
+    const handlerSourceClick =(source) =>{
+        
+    }
+    useEffect(() => {
+                SetIsLoading(true);
+                let updatedValue = {};
+                updatedValue = {key:searchParams.get('key')};
+                setSParams(searchParams => ({
+                    ...searchParams,
+                    ...updatedValue
+                  }))
+    },[searchParams]);
+
     useEffect(() => {
         const fetchApi = async () => {
             SetIsLoading(true);
-            const result = await  apiService.getProducts(searchParams);
+            const result = await  apiService.getProducts(sParams);
             setSearchResult(result);
             SetIsLoading(false);
             
         };
         fetchApi();
-    },[searchParams]);
+    },[sParams]);
 
     return (
         <div className="container">
             
             <div className="row">
-                <h2 className="search-title" >Kết quả tìm kiếm cho từ khóa  {key} </h2>
+                <h2 className="search-title" >Kết quả tìm kiếm cho từ khóa  {searchParams.get('key')} </h2>
             </div>
             <div className={cx("sort-section")}>
             <ul className={cx('source-list')}>
                     {
                         config.dataSources.map((item, index) => (
-                            <li  className={cx('sort-item')} onClick={ () => SortClickHandler(item.name)} key={item.index}>{item.name}</li>
+                            <li  className={cx('sort-item')} onClick={ () => handlerSourceClick(item.name)} key={item.index}>{item.name}</li>
                         ))
                     }
                 </ul>
                 <div className={cx('sort-label')}>Sắp xếp theo:</div>
                 <ul className={cx('sort-actions')}>
                     {lstSort.map((item)=>(
-                        <li onClick={ () => SortClickHandler(item.key)}  className={cx('sort-item') +" "+ (searchParams.by === item.key ? cx('active') : '')} key={item.key}>{item.value}</li>
+                        <li onClick={ () => SortClickHandler(item.key)}  className={cx('sort-item') +" "+ (sParams.by === item.key ? cx('active') : '')} key={item.key}>{item.value}</li>
                     ))}
                 </ul>
                 
@@ -79,20 +88,7 @@ function Search() {
 
             <div className="row">
                 {isLoading && ( 
-                    <>
-                    <ProductLoading />
-                    <ProductLoading />
-                    <ProductLoading />
-                    <ProductLoading />
-                    <ProductLoading />
-                    <ProductLoading />
-                    <ProductLoading />
-                    <ProductLoading />
-                    <ProductLoading />
-                    <ProductLoading />
-                    <ProductLoading />
-                    <ProductLoading />
-                    </>
+                    <ProductLoading numItem={16} />
                 )}
 
                 { !isLoading &&  (searchResult.length>0) &&  searchResult.map((result,index) => (
