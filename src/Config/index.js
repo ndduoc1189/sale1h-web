@@ -3,15 +3,15 @@
     dataSources:[
         {
             name:"Shopee",
-            thumb: "images/shopee.svg",
+            thumb: require('~/assets/images/shopee_logo.svg').default,
         },
         {
             name:"Tiki",
-            thumb: "images/tiki.svg",
+            thumb: require('~/assets/images/tiki_logo.svg').default,
         },
         {
-            name:"Sendo",
-            thumb: "images/tiki.svg",
+            name:"Lazada",
+            thumb: require('~/assets/images/lazada_logo.svg').default,
         }
     ]
 }

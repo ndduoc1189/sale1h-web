@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './ProductItem.module.scss';
-import images from '~/assets/images';
+import { productServices} from "~/services";
 import LazyLoad  from 'react-lazyload'
 
 const cx = classNames.bind(styles);
@@ -23,7 +23,7 @@ function ProductItem({data}) {
 
                 </a>
                 <div className={cx('btn-source')}>
-                    <img className="img-fluid" src={images.logoShoppe} alt="brand" />
+                    <img className="img-fluid" src={productServices.getLogo(data.source_type)} alt={data.source_type}/>
                     <span>{data.shop_location}</span>
                 </div>
             </div>
