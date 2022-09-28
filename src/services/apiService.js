@@ -1,12 +1,16 @@
 import axios from "axios";
 
 const httpRequest = axios.create({
-    baseURL: 'http://localhost:8989/',
+    baseURL: 'https://api.sale1h.com/',
     timeout: 10000
   });
 
 const apiService = {
 
+    checkService: async () =>{
+        var res = await httpRequest.get('https://api.sale1h.com/');
+        return res.data;
+    },
     getSearchHint : async (key) =>{
         var res = await httpRequest.get('search-hint',{
             params:{
@@ -20,6 +24,7 @@ const apiService = {
             params:searchParams});
         return res.data;
     }
+
 };
 
 
